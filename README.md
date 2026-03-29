@@ -9,6 +9,8 @@
 UI部分：https://github.com/ColdThunder11/ChaoXingDownload ，作者ColdThunder11，GPL-3.0开源协议，参考版本0.37  
 源文件下载逻辑：https://github.com/RytterMohn/chaoxingDownload ，作者：西电网信院的废物rytter & 西电网信院的废物B4a，MIT开源协议，参考版本1.12，我抛弃了xueyinonline适配、右上浮动进度条（进度条有空再补）  
 
+（v1.1已引入西电网信院大佬的进度条（浮动提示框）方案）  
+
 基于以上上游项目开源协议，本项目采用GPL-3.0协议发布  
 
 由于小弟水平有限，修改过程使用了千问Qwen、深度求索DeepSeek、豆包Doubao等AI辅助  
