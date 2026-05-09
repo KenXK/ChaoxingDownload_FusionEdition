@@ -15,6 +15,10 @@ UI部分：https://github.com/ColdThunder11/ChaoXingDownload ，作者ColdThunde
 
 由于小弟水平有限，修改过程使用了千问Qwen、深度求索DeepSeek、豆包Doubao等AI辅助  
 
+### 安装注意事项
+安装脚本后，如果章节页面刷新后仍没有任何变化（脚本完全不生效），尤其是首次使用油猴的用户，请在浏览器-扩展管理-油猴扩展的“详细信息”，检查是否开启“允许用户脚本”  
+<img width="1000" alt="0273a096c589fb634e431e9cc0783b3e" src="https://github.com/user-attachments/assets/147180e1-4900-4c3a-a2ed-6bf411376fc3" />
+
 ### 碎碎念
 最开始用的是ColdThunder11的脚本，在原页面每一个资源下方，显示“点此下载 第一章 概论.ppt”，点击这行字就可以下载，这很直观，指哪打哪，完美支持ppt、doc、mp4。  
 某一天，发现它加那一行字没问题，但可能是学习通服务器升级了，点击之后下载失败。  
