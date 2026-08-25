@@ -7,6 +7,8 @@
 // @match        *://*.chaoxing.com/mycourse/studentstudy?chapterId=*&courseId=*&clazzid=*&enc=*
 // @run-at       document-start
 // @grant        unsafeWindow
+// @updateURL    https://raw.githubusercontent.com/KenXK/ChaoxingDownload_FusionEdition/main/超星学习通章节资源直链下载（融合版）.user.js
+// @downloadURL  https://raw.githubusercontent.com/KenXK/ChaoxingDownload_FusionEdition/main/超星学习通章节资源直链下载（融合版）.user.js
 // ==/UserScript==
 
 // 如果脚本不生效（连在资源下面加一行文字都不成功），请尝试修改上方match规则，以匹配你所在单位的学习通的网址
