@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         超星学习通章节资源直链下载（融合版）
 // @namespace    https://github.com/KenXK/ChaoxingDownload_FusionEdition
-// @version      1.1
+// @version      1.2
 // @description  超星学习通章节资源直链下载，每个资源下方单独下载按钮，支持ppt(x),doc(x),pdf,mp4等资源源文件
-// @author       Github@ColdThunder11 + 西电网信院的废物rytter & B4a(Github@RytterMohn) + Github@KenXK使用Qwen&DeepSeek&豆包 辅助融合修改
+// @author       Github@ColdThunder11 + 西电网信院的废物rytter & B4a(Github@RytterMohn) + Github@KenXK使用Qwen&DeepSeek&豆包辅助融合修改
 // @match        *://*.chaoxing.com/mycourse/studentstudy?chapterId=*&courseId=*&clazzid=*&enc=*
 // @run-at       document-start
 // @grant        unsafeWindow
+// @updateURL    https://raw.githubusercontent.com/KenXK/ChaoxingDownload_FusionEdition/main/超星学习通章节资源直链下载（融合版）.user.js
+// @downloadURL  https://raw.githubusercontent.com/KenXK/ChaoxingDownload_FusionEdition/main/超星学习通章节资源直链下载（融合版）.user.js
 // ==/UserScript==
 
 // 如果脚本不生效（连在资源下面加一行文字都不成功），请尝试修改上方match规则，以匹配你所在单位的学习通的网址
@@ -53,7 +55,8 @@
 
         // 构建超星资源状态查询接口
         const protocolStr = document.location.protocol;
-        const url = `${protocolStr}//mooc1.chaoxing.com/ananas/status/${objectid}?flag=normal`;
+        const apiHost = location.hostname; 
+        const url = `${protocolStr}//${apiHost}/ananas/status/${objectid}?flag=normal`;
 
         console.log("【融合】现在fetch以下资源url：",url);
         let useXHRdownload = true;
@@ -72,7 +75,7 @@
                 const officeExtensions = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx'];
                 if (officeExtensions.some(ext => fullFileName.toLowerCase().includes(ext))) {
                     // DOC/DOCX/PPT/PPTX文件使用download链接（原文件），替换http为https
-                    fileUrl = json.download.replace('http://', 'https://');
+                    fileUrl = json.download.replace('http://', 'https://').replace('mooc1.chaoxing.com', apiHost);
                     window.open(fileUrl);
                     useXHRdownload = false;
                 } else if (json.pdf) {

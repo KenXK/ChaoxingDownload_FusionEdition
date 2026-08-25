@@ -1,15 +1,13 @@
 # ChaoxingDownload_FusionEdition
 超星学习通章节资源直链下载，每个资源下方单独下载按钮，支持ppt(x),doc(x),pdf,mp4等资源源文件  
   
-欢迎提Issues、PR，也可以Email我：621818579@qq.com
+欢迎提Issues、PR，也可以Email我：ken-xk@foxmail.com
 
 ### 脚本说明  
 本项目融合修改自以下项目，取各家所长，郑重感谢！ 
 
 UI部分：https://github.com/ColdThunder11/ChaoXingDownload ，作者ColdThunder11，GPL-3.0开源协议，参考版本0.37  
-源文件下载逻辑：https://github.com/RytterMohn/chaoxingDownload ，作者：西电网信院的废物rytter & 西电网信院的废物B4a，MIT开源协议，参考版本1.12，我抛弃了xueyinonline适配、右上浮动进度条（进度条有空再补）  
-
-（v1.1已引入西电网信院大佬的进度条（浮动提示框）方案）  
+源文件下载逻辑：https://github.com/RytterMohn/chaoxingDownload ，作者：西电网信院的废物rytter & 西电网信院的废物B4a，MIT开源协议，参考版本1.12，我抛弃了xueyinonline适配、右上浮动进度条（进度条有空再补）   
 
 基于以上上游项目开源协议，本项目采用GPL-3.0协议发布  
 
@@ -18,6 +16,15 @@ UI部分：https://github.com/ColdThunder11/ChaoXingDownload ，作者ColdThunde
 ### 安装注意事项
 安装脚本后，如果章节页面刷新后仍没有任何变化（脚本完全不生效），尤其是首次使用油猴的用户，请在浏览器-扩展管理-油猴扩展的“详细信息”，检查是否开启“允许用户脚本”  
 <img width="1000" alt="0273a096c589fb634e431e9cc0783b3e" src="https://github.com/user-attachments/assets/147180e1-4900-4c3a-a2ed-6bf411376fc3" />
+
+如安装启用后网页不断刷新，
+可尝试将match头改为`// @match ://i.chaoxing.com/`
+
+### 更新日志
+
+v1.1 引入西电网信院大佬的进度条（浮动提示框）方案
+
+v1.2 下载逻辑适配部分单位使用自有域名部署的站点
 
 ### 碎碎念
 最开始用的是ColdThunder11的脚本，在原页面每一个资源下方，显示“点此下载 第一章 概论.ppt”，点击这行字就可以下载，这很直观，指哪打哪，完美支持ppt、doc、mp4。  
