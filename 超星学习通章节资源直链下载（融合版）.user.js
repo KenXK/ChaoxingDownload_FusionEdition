@@ -5,10 +5,9 @@
 // @description  超星学习通章节资源直链下载，每个资源下方单独下载按钮，支持ppt(x),doc(x),pdf,mp4等资源源文件
 // @author       Github@ColdThunder11 + 西电网信院的废物rytter & B4a(Github@RytterMohn) + Github@KenXK使用Qwen&DeepSeek&豆包辅助融合修改
 // @match        *://*.chaoxing.com/mycourse/studentstudy?chapterId=*&courseId=*&clazzid=*&enc=*
+// @match        *://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*
 // @run-at       document-start
 // @grant        unsafeWindow
-// @updateURL    https://raw.githubusercontent.com/KenXK/ChaoxingDownload_FusionEdition/main/超星学习通章节资源直链下载（融合版）.user.js
-// @downloadURL  https://raw.githubusercontent.com/KenXK/ChaoxingDownload_FusionEdition/main/超星学习通章节资源直链下载（融合版）.user.js
 // ==/UserScript==
 
 // 如果脚本不生效（连在资源下面加一行文字都不成功），请尝试修改上方match规则，以匹配你所在单位的学习通的网址
@@ -175,61 +174,76 @@
     }
 
     // 注入下载按钮（基于CT11脚本的UI逻辑）
+    function processContainer(container) {
+        // 避免重复注入按钮
+        if (container.querySelector(".cx-download-btn")) return;
+
+        // 获取资源objectid和文件名
+        const resourceIframe = container.getElementsByTagName("iframe")[0];
+        if (!resourceIframe) return;
+
+        const objectid = resourceIframe.getAttribute("objectid");
+        if (!objectid) return;
+
+        // 解析文件名和类型
+        let fileName = resourceIframe.getAttribute("name") || "未知文件";
+        const dataAttr = resourceIframe.getAttribute("data");
+        if (dataAttr) {
+            try {
+                const dataJson = JSON.parse(dataAttr);
+                fileName = dataJson.name || fileName;
+            } catch (e) { /* 解析失败则使用默认名 */ }
+        }
+
+        // 创建下载按钮
+        const downloadBtn = document.createElement("div");
+        downloadBtn.className = "cx-download-btn";
+        downloadBtn.style.cssText = `
+            cursor: pointer;
+            font-size: 14px;
+            color: #30a669;
+            margin-top: 5px;
+            padding: 2px 0;
+        `;
+        downloadBtn.innerHTML = `点此下载 ${fileName}`;
+
+        // 绑定下载事件
+        downloadBtn.onclick = () => downloadResource(objectid, fileName);
+
+        // 注入按钮到资源容器
+        container.appendChild(downloadBtn);
+    }
+
     function injectDownloadButtons() {
         setInterval(() => {
-            const iframes = document.getElementsByTagName("iframe");
-            for (let i = 0; i < iframes.length; i++) {
-                try {
-                    const frame = iframes[i];
-                    const frameDoc = frame.contentWindow?.document;
-                    if (!frameDoc) continue;
+            // 判断当前页面是否为新的目标页面
+            const isNewPage = window.location.href.includes('chaoxing.com/mooc-ans/nodedetailcontroller');
 
-                    // 获取资源容器
-                    const ansContainers = frameDoc.getElementsByClassName("ans-attach-ct");
-                    if (ansContainers.length === 0) continue;
+            if (isNewPage) {
+                // --- 针对新页面 example.com/bbb/* 的逻辑 ---
+                const ansContainers = document.getElementsByClassName("ans-attach-ct");
+                for (let j = 0; j < ansContainers.length; j++) {
+                    processContainer(ansContainers[j]);
+                }
+            } else {
+                // --- 原有逻辑保持不变 ---
+                const iframes = document.getElementsByTagName("iframe");
+                for (let i = 0; i < iframes.length; i++) {
+                    try {
+                        const frame = iframes[i];
+                        const frameDoc = frame.contentWindow?.document;
+                        if (!frameDoc) continue;
 
-                    for (let j = 0; j < ansContainers.length; j++) {
-                        const container = ansContainers[j];
-                        // 避免重复注入按钮
-                        if (container.querySelector(".cx-download-btn")) continue;
+                        // 获取资源容器
+                        const ansContainers = frameDoc.getElementsByClassName("ans-attach-ct");
+                        if (ansContainers.length === 0) continue;
 
-                        // 获取资源objectid和文件名
-                        const resourceIframe = container.getElementsByTagName("iframe")[0];
-                        if (!resourceIframe) continue;
-
-                        const objectid = resourceIframe.getAttribute("objectid");
-                        if (!objectid) continue;
-
-                        // 解析文件名和类型
-                        let fileName = resourceIframe.getAttribute("name") || "未知文件";
-                        const dataAttr = resourceIframe.getAttribute("data");
-                        if (dataAttr) {
-                            try {
-                                const dataJson = JSON.parse(dataAttr);
-                                fileName = dataJson.name || fileName;
-                            } catch (e) { /* 解析失败则使用默认名 */ }
+                        for (let j = 0; j < ansContainers.length; j++) {
+                            processContainer(ansContainers[j]);
                         }
-
-                        // 创建下载按钮
-                        const downloadBtn = document.createElement("div");
-                        downloadBtn.className = "cx-download-btn";
-                        downloadBtn.style.cssText = `
-                            cursor: pointer;
-                            font-size: 14px;
-                            color: #30a669;
-                            margin-top: 5px;
-                            padding: 2px 0;
-                        `;
-                        downloadBtn.innerHTML = `点此下载 ${fileName}`;
-
-                        // 绑定下载事件
-                        downloadBtn.onclick = () => downloadResource(objectid, fileName);
-
-                        // 注入按钮到资源容器
-                        container.appendChild(downloadBtn);
+                    } catch (e) {
+                        console.error("注入下载按钮失败：", e);
                     }
-                } catch (e) {
-                    console.error("注入下载按钮失败：", e);
                 }
             }
         }, 2000); // 每2秒检查一次，确保动态加载的资源也能注入

@@ -24,7 +24,9 @@ UI部分：https://github.com/ColdThunder11/ChaoXingDownload ，作者ColdThunde
 
 v1.1 引入西电网信院大佬的进度条（浮动提示框）方案
 
-v1.2 下载逻辑适配部分单位使用自有域名部署的站点
+v1.2 下载逻辑适配部分单位使用自有域名部署的站点（感谢小伙伴的Issue #1）
+
+v1.3 火线增加适配`*://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*`，人工独立分析页面结构差异，Qwen改动代码
 
 ### 碎碎念
 最开始用的是ColdThunder11的脚本，在原页面每一个资源下方，显示“点此下载 第一章 概论.ppt”，点击这行字就可以下载，这很直观，指哪打哪，完美支持ppt、doc、mp4。  
