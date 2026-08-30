@@ -18,13 +18,13 @@ UI部分：https://github.com/ColdThunder11/ChaoXingDownload ，作者ColdThunde
 <img width="1000" alt="0273a096c589fb634e431e9cc0783b3e" src="https://github.com/user-attachments/assets/147180e1-4900-4c3a-a2ed-6bf411376fc3" />
 
 如安装启用后网页不断刷新，
-可尝试将match头改为`// @match ://i.chaoxing.com/`
+可尝试将match头改为`// @match ://i.chaoxing.com/`（[#1](https://github.com/KenXK/ChaoxingDownload_FusionEdition/issues/1)）
 
 ### 更新日志
 
 v1.1 引入西电网信院大佬的进度条（浮动提示框）方案
 
-v1.2 下载逻辑适配部分单位使用自有域名部署的站点（感谢小伙伴的Issue #1）
+v1.2 下载逻辑适配部分单位使用自有域名部署的站点（感谢小伙伴的Issue [#1](https://github.com/KenXK/ChaoxingDownload_FusionEdition/issues/1)）
 
 v1.3 火线增加适配`*://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*`，人工独立分析页面结构差异，Qwen改动代码
 
