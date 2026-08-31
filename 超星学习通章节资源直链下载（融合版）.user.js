@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         超星学习通章节资源直链下载（融合版）
 // @namespace    https://github.com/KenXK/ChaoxingDownload_FusionEdition
-// @version      1.2
+// @version      1.3
 // @description  超星学习通章节资源直链下载，每个资源下方单独下载按钮，支持ppt(x),doc(x),pdf,mp4等资源源文件
 // @author       Github@ColdThunder11 + 西电网信院的废物rytter & B4a(Github@RytterMohn) + Github@KenXK使用Qwen&DeepSeek&豆包辅助融合修改
 // @match        *://*.chaoxing.com/mycourse/studentstudy?chapterId=*&courseId=*&clazzid=*&enc=*
