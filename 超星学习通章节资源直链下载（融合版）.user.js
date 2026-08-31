@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         超星学习通章节资源直链下载（融合版）
 // @namespace    https://github.com/KenXK/ChaoxingDownload_FusionEdition
-// @version      1.3
+// @version      1.3.1
 // @description  超星学习通章节资源直链下载，每个资源下方单独下载按钮，支持ppt(x),doc(x),pdf,mp4等资源源文件
 // @author       Github@ColdThunder11 + 西电网信院的废物rytter & B4a(Github@RytterMohn) + Github@KenXK使用Qwen&DeepSeek&豆包辅助融合修改
 // @match        *://*.chaoxing.com/mycourse/studentstudy?chapterId=*&courseId=*&clazzid=*&enc=*
-// @match        *://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*
+// @match        *://*.chaoxing.com/mooc-ans/*
 // @run-at       document-start
 // @grant        unsafeWindow
 // @updateURL    https://github.com/KenXK/ChaoxingDownload_FusionEdition/raw/refs/heads/main/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E7%AB%A0%E8%8A%82%E8%B5%84%E6%BA%90%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%EF%BC%88%E8%9E%8D%E5%90%88%E7%89%88%EF%BC%89.user.js
@@ -222,12 +222,14 @@
             const isNewPage = window.location.href.includes('chaoxing.com/mooc-ans/nodedetailcontroller');
 
             if (isNewPage) {
+                console.log("【融合】匹配到chaoxing.com/mooc-ans/nodedetailcontroller")
                 // --- 针对新页面 example.com/bbb/* 的逻辑 ---
                 const ansContainers = document.getElementsByClassName("ans-attach-ct");
                 for (let j = 0; j < ansContainers.length; j++) {
                     processContainer(ansContainers[j]);
                 }
             } else {
+                console.log("【融合】匹配到其他")
                 // --- 原有逻辑保持不变 ---
                 const iframes = document.getElementsByTagName("iframe");
                 for (let i = 0; i < iframes.length; i++) {

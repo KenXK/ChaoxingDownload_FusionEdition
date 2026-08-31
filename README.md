@@ -28,6 +28,8 @@ v1.2 下载逻辑适配部分单位使用自有域名部署的站点（感谢小
 
 v1.3 火线增加适配`*://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*`，人工独立分析页面结构差异，Qwen改动代码
 
+v1.3.1 火线适配从`*://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*`点击右侧目录跳转到`*://*.chaoxing.com/mooc-ans/mycourse/studentstudy?chapterId=*&courseId=*&clazzid=*&cpi=*&enc=*&mooc2=*&openc=*`后的按钮注入和资源解析逻辑
+
 ### 碎碎念
 最开始用的是ColdThunder11的脚本，在原页面每一个资源下方，显示“点此下载 第一章 概论.ppt”，点击这行字就可以下载，这很直观，指哪打哪，完美支持ppt、doc、mp4。  
 某一天，发现它加那一行字没问题，但可能是学习通服务器升级了，点击之后下载失败。  
