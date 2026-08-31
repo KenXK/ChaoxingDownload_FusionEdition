@@ -8,6 +8,8 @@
 // @match        *://*.chaoxing.com/mooc-ans/nodedetailcontroller/visitnodedetail?courseId=*&knowledgeId=*
 // @run-at       document-start
 // @grant        unsafeWindow
+// @updateURL    https://github.com/KenXK/ChaoxingDownload_FusionEdition/raw/refs/heads/main/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E7%AB%A0%E8%8A%82%E8%B5%84%E6%BA%90%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%EF%BC%88%E8%9E%8D%E5%90%88%E7%89%88%EF%BC%89.user.js
+// @downloadURL  https://github.com/KenXK/ChaoxingDownload_FusionEdition/raw/refs/heads/main/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E7%AB%A0%E8%8A%82%E8%B5%84%E6%BA%90%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%EF%BC%88%E8%9E%8D%E5%90%88%E7%89%88%EF%BC%89.user.js
 // ==/UserScript==
 
 // 如果脚本不生效（连在资源下面加一行文字都不成功），请尝试修改上方match规则，以匹配你所在单位的学习通的网址
