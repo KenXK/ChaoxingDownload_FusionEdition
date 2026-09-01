@@ -189,11 +189,15 @@
 
         // 解析文件名和类型
         let fileName = resourceIframe.getAttribute("name") || "未知文件";
+        let fileSize = "未知大小";
+        let fileHsize = "未知大小";
         const dataAttr = resourceIframe.getAttribute("data");
         if (dataAttr) {
             try {
                 const dataJson = JSON.parse(dataAttr);
                 fileName = dataJson.name || fileName;
+                fileSize = dataJson.size || fileSize;
+                fileHsize = dataJson.hsize || fileHsize;
             } catch (e) { /* 解析失败则使用默认名 */ }
         }
 
@@ -207,7 +211,7 @@
             margin-top: 5px;
             padding: 2px 0;
         `;
-        downloadBtn.innerHTML = `点此下载 ${fileName}`;
+        downloadBtn.innerHTML = `点此下载　${fileName}　${fileHsize}　${fileSize} B`;
 
         // 绑定下载事件
         downloadBtn.onclick = () => downloadResource(objectid, fileName);
